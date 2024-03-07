@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <cmath>
-
 using namespace std;
 
 struct rec {
@@ -14,7 +13,7 @@ int main()
 
     int arr[4];
     int p1,p4;
-    cout << "enter the two opposite points :" << endl;
+    
     for (int i = 0; i <= 3; i++) {
         cin >> arr[i];
     }
