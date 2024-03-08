@@ -19,7 +19,7 @@ int main()
     if(g==repeat){goto sdsd;}
     else{
     s=(g==1) ? "A" : (g==2) ? "B":"C";
-    cout<<rando(1,255)<<"."<<rando(30,155)<<"."<<rando(20,90)<<"."<<rando(1,255)<<endl;
+    cout<<rando(1,255)<<"."<<rando(30,155)<<"."<<rando(20,90)<<"."<<rando(1,255)<<"/"<<rando(8,32)<<endl;
      cout<<"Class: "<<s<<endl;
         cin>>x;
     }
