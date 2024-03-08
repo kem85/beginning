@@ -10,6 +10,7 @@ int rando (int x,int g) //random function
     }
 int main()
 {
+    //test
     char x='y';string s;
     int repeat,g;
     while(true)
