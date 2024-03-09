@@ -63,7 +63,7 @@ int rando (int x,int g) //random function
     for(int i=0;i <4;i++)
      {
          vec.push_back(starter);
-         starkkkkter = (starter / devi);
+         starter = (starter / devi);
             if (i == 3)
                 {
                     answer = starter;
