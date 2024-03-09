@@ -10,10 +10,10 @@ int rando (int x,int g) //random function
     }
 int main()
 {
-    char x='y',s;
-    int repeat,g,subnet;
-    while(true)
-    {
+    // char x='y',s;
+    // int repeat,g,subnet;
+    // while(true)
+    // {
     sdsd:
     g=rando(1,3);
     if(g==repeat){goto sdsd;}
