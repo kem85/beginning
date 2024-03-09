@@ -12,8 +12,8 @@ int rando (int x,int g) //random function
     }
 int main()
 {
+    //this is another test pablo
      char x='y',s;
-    //this is a shortcut test
      int repeat,g,subnet;
      while(true)
      {
