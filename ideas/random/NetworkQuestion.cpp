@@ -10,7 +10,7 @@ int rando (int num1,int num2) //random function
     }
 int main()
 {
-    //this is another test pablo
+    //this is A pablo
      char x='y',s;
      int repeat,g,subnet;
      while(true)
