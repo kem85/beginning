@@ -26,6 +26,7 @@ int main()
     cout<<"Class: "<<s<<endl;
     cin>>x;
     }
+    // test
     //test
     repeat=g;
     }
