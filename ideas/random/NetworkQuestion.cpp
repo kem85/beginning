@@ -1,5 +1,7 @@
 #include <iostream>
 #include <random>  
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "EndlessLoop"
 using namespace std;
 int rando (int x,int g) //random function
     {
@@ -10,10 +12,11 @@ int rando (int x,int g) //random function
     }
 int main()
 {
-    // char x='y',s;
-    // int repeat,g,subnet;
-    // while(true)
-    // {
+     char x='y',s;
+    //this is a shortcut test
+     int repeat,g,subnet;
+     while(true)
+     {
     sdsd:
     g=rando(1,3);
     if(g==repeat){goto sdsd;}
@@ -28,3 +31,4 @@ int main()
     repeat=g;
     }
 }
+#pragma clang diagnostic pop
