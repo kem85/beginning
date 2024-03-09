@@ -1,7 +1,5 @@
 #include <iostream>
-#include <random>  
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "EndlessLoop"
+#include <random>
 using namespace std;
 int rando (int x,int g) //random function
     {
@@ -28,7 +26,7 @@ int main()
     cout<<"Class: "<<s<<endl;
     cin>>x;
     }
+    //test
     repeat=g;
     }
 }
-#pragma clang diagnostic pop
