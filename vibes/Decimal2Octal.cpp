@@ -5,7 +5,7 @@ int main()
     int op,g,s=0,l=0;
     cin>>g;
     op=g;
-    for(int i=0;;)
+    for(;;)
     {
         if(op==0)
         {
