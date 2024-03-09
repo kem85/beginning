@@ -1,0 +1,3 @@
+C:/Users/ahame/CLionProjects/beginning/vibes/bag/cmake-build-debug/CMakeFiles/target.dir
+C:/Users/ahame/CLionProjects/beginning/vibes/bag/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/ahame/CLionProjects/beginning/vibes/bag/cmake-build-debug/CMakeFiles/rebuild_cache.dir
