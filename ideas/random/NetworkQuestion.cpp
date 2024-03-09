@@ -10,7 +10,7 @@ int rando (int num1,int num2) //random function
     }
 int main()
 {
-    //this is A pablo
+    //this is PABLO
      char x='y',s;
      int repeat,g,subnet;
      while(true)
@@ -27,8 +27,6 @@ int main()
     if(g<=2){cout<<true;}
     cin>>x;
     }
-    // test
-    //test
     repeat=g;
     }
 }
