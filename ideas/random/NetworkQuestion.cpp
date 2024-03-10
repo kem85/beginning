@@ -46,6 +46,32 @@ vector<int> tobinary(int g) //this converts deciaml to binary and puts it in an 
     }
     return binary;
 }
+vector <int> toOctal(int g)//same with binary
+{
+    vector <int> octal;
+    int op=0,s=0,p=0;
+    op=g;
+        while(true)
+    {
+        if(op==0)
+        {
+            break;
+        }
+        else{op/=8;s++;} 
+    }
+    int data[s];
+    for (int i=0;i<s;i++) //s=6  5
+    {
+        if(p==0)
+        {
+        data[i]=g%8;
+        g/=8;
+        if(i==s-1){p=1;i=s-2;}
+        }
+         else{for(int j=s-1;j>=0;j--){octal.push_back(data[j]);}}
+    } 
+return octal;
+}
 /*    int ipcheck(string ip)
     {
         int g=0;
@@ -100,6 +126,6 @@ int main()
     vector <int> check;
     int decimal;
     cin>>decimal;
-    check=tobinary(decimal);
-    for(int i=0;i<tobinary(decimal).size();i++){cout<<tobinary(decimal)[i];} //checker
-}
+    check=toOctal(decimal);
+    for(int i=0;i<toOctal(decimal).size();i++){cout<<toOctal(decimal)[i];} //checker
+    }
