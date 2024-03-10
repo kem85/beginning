@@ -12,7 +12,7 @@ int rando (int num1,int num2) //random function
     int ipcheck(string ip)
     {
         char rep='y';
-        int repeat,g=0,subnet;
+        int repeat,g=0,subnet,s=0,op=0,p=0;
         int xaxis[2]{0,0},yaxis[2]{0,0},dynamic[4][3],memory[4];
         int gaga;
         int newip[4];
@@ -56,9 +56,6 @@ int rando (int num1,int num2) //random function
         }
         for(int i=0;i<xaxis[0]+1;i++)
         {
-
-        }
-
 
         }
     }
