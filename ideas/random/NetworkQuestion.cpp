@@ -9,7 +9,44 @@ int rando (int num1,int num2) //random function
     uniform_int_distribution<> dis(num1, num2);
     return dis(gen);
 }
-    int ipcheck(string ip)
+int power(int b,int p)
+{
+    int c=1;
+    for(int i=0;i<p;i++)
+    {
+        c=c*b;
+    }
+    return c;
+    
+}
+vector<int> tobinary(int g) //this converts deciaml to binary and puts it in an array
+{
+    int s=0,op=0,p=0;
+    vector <int>binary;
+    op=g;
+    while(true)
+    {
+        if(op==0)
+        {
+            break;
+        }
+        else{op/=2;s++;} 
+    }
+ int data[s];
+    for (int i=0;i<s;i++) //
+    {
+        if(p==0)
+        {
+        data[i]=g%2; //1250  0521
+        g/=2;
+        if(i==s-1){p=1;i=s-2;}
+        }
+         else{for(int j=s-1;j>=0;j--){binary.push_back(data[j]);}
+        }
+    }
+    return binary;
+}
+/*    int ipcheck(string ip)
     {
         int g=0;
         int xaxis[2]{0,0},yaxis[2]{0,0},dynamic[4][3],memory[4];
@@ -54,10 +91,15 @@ int rando (int num1,int num2) //random function
         {
             //change decimal to octal then octal to binary... all this to change ip to binary, then we get subnet and do && and ||
         }
-    }
+    }*/
 int main()
 {
-    string ip;
-    cin>>ip;
-    ipcheck(ip);
+    // string ip;
+    // cin>>ip;
+    // ipcheck(ip);
+    vector <int> check;
+    int decimal;
+    cin>>decimal;
+    check=tobinary(decimal);
+    for(int i=0;i<tobinary(decimal).size();i++){cout<<tobinary(decimal)[i];} //checker
 }
