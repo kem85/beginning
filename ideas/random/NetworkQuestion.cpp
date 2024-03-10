@@ -72,12 +72,12 @@ vector <int> toOctal(int g)//same with binary
     } 
 return octal;
 }
-/*    int ipcheck(string ip)
+   int ipcheck(string ip)
     {
         int g=0;
         int xaxis[2]{0,0},yaxis[2]{0,0},dynamic[4][3],memory[4];
         int newip[4];
-        int octal[8]{128,64,32,16,8,4,2,1};
+        vector <int> octal,binary;
         string ips[4];
         for(int i=0;i<ip.length();i++)
         {
@@ -115,17 +115,20 @@ return octal;
         }
         for(int i=0;i<xaxis[0]+1;i++)
         {
-            //change decimal to octal then octal to binary... all this to change ip to binary, then we get subnet and do && and ||
+            octal=toOctal(newip[i]);
+            binary=tobinary(octal);
+            cout<<octal<<endl;
+            for(int i=0;i<toOctal(decimal).size();i++){cout<<toOctal(decimal)[i];} //checker
         }
-    }*/
+    }
 int main()
 {
-    // string ip;
-    // cin>>ip;
-    // ipcheck(ip);
+    string ip;
     vector <int> check;
-    int decimal;
-    cin>>decimal;
-    check=toOctal(decimal);
-    for(int i=0;i<toOctal(decimal).size();i++){cout<<toOctal(decimal)[i];} //checker
+    cin>>ip;
+    ipcheck(ip);
+    // int decimal;
+    // cin>>decimal;
+    // check=toOctal(decimal);
+    // for(int i=0;i<toOctal(decimal).size();i++){cout<<toOctal(decimal)[i];} //checker
     }
