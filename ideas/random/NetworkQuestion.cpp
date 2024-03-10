@@ -56,7 +56,7 @@ int rando (int num1,int num2) //random function
         }
         for(int i=0;i<xaxis[0]+1;i++)
         {
-
+            //change decimal to octal then octal to binary... all this to change ip to binary, then we get subnet and do && and ||
         }
     }
 int main()
