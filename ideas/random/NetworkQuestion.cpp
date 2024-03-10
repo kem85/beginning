@@ -11,10 +11,8 @@ int rando (int num1,int num2) //random function
 }
     int ipcheck(string ip)
     {
-        char rep='y';
-        int repeat,g=0,subnet,s=0,op=0,p=0;
+        int g=0;
         int xaxis[2]{0,0},yaxis[2]{0,0},dynamic[4][3],memory[4];
-        int gaga;
         int newip[4];
         int octal[8]{128,64,32,16,8,4,2,1};
         string ips[4];
@@ -39,13 +37,11 @@ int rando (int num1,int num2) //random function
         {
             if(memory[g]==dynamic[xaxis[1]][yaxis[1]])
             {
-//                cout<<dynamic[xaxis[1]][yaxis[1]]<<"."; //12[5].45[6].674
                 ips[g]+=to_string(dynamic[xaxis[1]][yaxis[1]]);
                 yaxis[1]=0;
                 xaxis[1]++;
                 g++;
             }
-//            cout << dynamic[xaxis[1]][yaxis[1]];
             ips[g]+=to_string(dynamic[xaxis[1]][yaxis[1]]);
 
             yaxis[1]++;
