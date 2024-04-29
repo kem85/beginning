@@ -1,7 +1,8 @@
 #include <iostream>
 using namespace std;
-int main()
+int main() 
 {
+    //sss
     int num;string prime;
     cout<<"Enter Your Number:";
     cin>>num;
@@ -9,7 +10,7 @@ int main()
     {
         if(num%i==0&&i!=1&&num!=i||num==1)
         {
-            prime="is not prime";break;
+            prime="is not prime";
         }
         else
         {
