@@ -3,7 +3,6 @@ using namespace std;
 int main()
 {
     int num;
-    cout<<"Enter Your Number:";
     cin>>num;
     for(int i=num;i>=1;i--)
     {
@@ -17,7 +16,7 @@ int main()
         }
         else if(i==j)
         {
-            cout<<i<<endl;
+            cout<<i<<" ";
             break;
         }
         
