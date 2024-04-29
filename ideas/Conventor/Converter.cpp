@@ -52,9 +52,9 @@ int data[s];
     cin>>y;
     cout<<"Decimal: ";
     o=y.length();
-    for(int i=y.length()-1;i>0;i--) 
+    for(int i=0;i<y.length();i++) 
     {
-        sum+=(y[i]-48)*power(2,i); //-2
+        sum+=(y[i]-48)*power(2,--o); //-2
     }
     cout<<"Number:"<<sum<<endl;
     }

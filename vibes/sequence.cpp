@@ -34,7 +34,7 @@ int rando (int x,int g) //random function
      long long int devi,starter,answer,x=0,o=0,g=0,
      plus=0;
      long long int temp2,temp1;
-        Againn: //delay 
+      Againn: //delay 
         Again: //if starter % div != 0
         starter=rando(rando(6,6000),rando(6001,800000)); //the fun arena
         devi=rando(rando(10,15),rando(16,20));

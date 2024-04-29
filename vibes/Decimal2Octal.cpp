@@ -20,15 +20,8 @@ int main()
         {
         data[i]=g%8;
         g/=8;
-        if(i == s-1)
-            {
-            l=1;
-            i=s-2;
-            }
+        if(i==s-1){l=1;i=s-2;}
         }
-         else
-         {
-            for(int j=s-1;j>=0;j--){cout<<data[j];}
-         }
+         else{for(int j=s-1;j>=0;j--){cout<<data[j];}}
     } 
 }
