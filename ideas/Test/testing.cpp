@@ -7,4 +7,3 @@ int main()
                         cout<<"gg";
     cout<<g[4];
 }
-//p-->q

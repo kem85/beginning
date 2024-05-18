@@ -4,9 +4,6 @@
 using namespace std;
 int main()
 {	
-<<<<<<< Updated upstream
-    cout<<"pablo";
-=======
     string inp;
     vector<char> sign,bracket;
     vector<int> indect[2];
@@ -29,5 +26,4 @@ int main()
     {
         cout<<sign[i];
     }
->>>>>>> Stashed changes
 }
