@@ -13,7 +13,7 @@ string reverse(string str)
     }
     return str;
 }
-int getcount(string str,bool neg)
+int getcount(string str)
 {
     int count = 0;
     for(int i = 0 ; i < str.length() ; i ++)
@@ -23,29 +23,21 @@ int getcount(string str,bool neg)
             count++;
         }
     }
-    if(neg)
-    {
-        count--;
-    }
     return count;
 }
 int main()
 {
     while(true){
-    bool neg,uni = false;
-    int cal=0;
+    float cal=0;
     int l,r,start,end = 1;
     string num="",store; 
     cin>>num;
-    neg = (num[0]=='-'? true : false);
-    int countr = getcount(num,neg);
+    int countr = getcount(num);
     for(int z = 0 ; z < countr ; z++)
     {
         for(int i = 0 ; i < num.length() ; i ++)
         {
-            if(neg&&i==0){uni=true;}
-            else{uni=false;}
-            if((num[i] == '+' || (num[i] == '-'&&!uni)) && l != 2)
+            if((num[i] == '+' || (num[i] == '-')) && l != 2)
             {
                 //left
                 string ladd = "";
@@ -56,7 +48,7 @@ int main()
                         l = 2;
                         break; // dont do it man
                     }
-                    else if(num[j] == '+' || (num[j] == '-'&&!uni))
+                    else if(num[j] == '+' || (num[j] == '-'))
                     {
                         start = j+1;
                         break;
@@ -78,7 +70,7 @@ int main()
                         l = 2;
                         break; // dont do it man
                     }
-                    else if(num[j] == '+' || (num[j] == ('-')&&!uni))
+                    else if(num[j] == '+' || (num[j] == ('-')))
                     {
                         end = j-1;
                         break;
@@ -98,25 +90,16 @@ int main()
                 }
                 if(num[i] == '+')
                 {
-                    num.erase(start,end-start);
-                    if(neg)
-                    {
-                        cal = (-stoi(ladd) + stoi(radd));
-                    }
-                    else
-                    {
-                    cal = (stoi(radd) + stoi(ladd));
-                    neg = (cal < 0 ? true : false);
-                    }
-                        num =  to_string(stoi(ladd) + stoi(radd)) + num;
+                    num.erase(start,(end-start)+1);
+                    num =  to_string(stof(ladd) + stof(radd)) + num;
+                    cal = (stof(radd) + stof(ladd));
                     break;
                 }
                 else
                 {
-                    cal = (stoi(ladd) - stoi(radd));
-                    neg = (cal < 0 ? true : false);
-                    num.erase(start,(end-start)+1);
-                    num =  to_string(stoi(ladd) - stoi(radd)) + num;
+                    cal = (stof(ladd) - stof(radd));
+                    num.erase(start,(end-start));
+                    num =  to_string(stof(ladd) - stof(radd)) + num;
                     break;
                 }
 
@@ -127,7 +110,7 @@ int main()
                 string ladd = "";
                 for(int j = i-1 ;j >= 0;j--)
                 {
-                    if(num[j] == '+' || (num[j] == '-' &&!uni))
+                    if(num[j] == '+' || (num[j] == '-' ))
                     {
                         start = j+1;
                         break;
@@ -144,7 +127,7 @@ int main()
                 string radd = "";
                 for(int j = i+1 ;j < num.length();j++)
                 {
-                    if(num[j] == '*' || num[j] == '/' ||num[j] == '+' || (num[j] == '-' &&!uni) )
+                    if(num[j] == '*' || num[j] == '/' ||num[j] == '+' || (num[j] == '-' ) )
                     {
                         end = j-1;
                         break;
@@ -158,7 +141,7 @@ int main()
                     radd+=num[j];
                 }
                 ladd = reverse(ladd);
-                cal = (num[i] == '*' ? stoi(ladd)*stoi(radd) : stoi(ladd)/stoi(radd));
+                cal = (num[i] == '*' ? stof(ladd)*stof(radd) : stof(ladd)/stof(radd));
                 num.erase(start,(end-start)+1);
                 if(start!=0)
                 {
@@ -176,11 +159,13 @@ int main()
                 else
                 {
                     store = num;
-                    for(int b = start,k = 0 ; b < start+(to_string(cal).length()) ; b ++,k++)
+                    for(int b = start,k = to_string(cal).length()-1; b < start+(to_string(cal).length()) ; b ++,k--)
                     {
                         num = to_string(cal)[k] + num;
                     }
                 }
+
+                store.clear();
                 l=1;
                 i=0;
             }
