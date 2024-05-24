@@ -1,81 +1,191 @@
 #include <iostream>
 #include <vector>
+#include <string>
 using namespace std;
+string reverse(string str)
+{
+    if(str.length() >= 2)
+    {
+     string l;
+     for (int i = str.length() - 1; i >= 0; i--)
+         l += str[i];
+     return l;
+    }
+    return str;
+}
+int getcount(string str,bool neg)
+{
+    int count = 0;
+    for(int i = 0 ; i < str.length() ; i ++)
+    {
+        if(str[i] == '/'||str[i] == '-'||str[i] == '+'||str[i] == '*')
+        {
+            count++;
+        }
+    }
+    if(neg)
+    {
+        count--;
+    }
+    return count;
+}
 int main()
 {
-    vector<string> brac;
-    vector<int> filter,index,checked[3];
-    int count = 0;
-    string eq;
-    cin>>eq;
-    for(int i = 0; i < eq.length() ; i++)
+    while(true){
+    bool neg,uni = false;
+    int cal=0;
+    int l,r,start,end = 1;
+    string num="",store; 
+    cin>>num;
+    neg = (num[0]=='-'? true : false);
+    int countr = getcount(num,neg);
+    for(int z = 0 ; z < countr ; z++)
     {
-        if(eq[i] == '(')
+        for(int i = 0 ; i < num.length() ; i ++)
         {
-            brac.push_back("o"+ to_string(++count));
-            index.push_back(i);
-        }
-        if(eq[i] == ')')
-        {
-            brac.push_back('b'+ to_string(count--));
-            index.push_back(i);
-        }
-    }
-
-for(int i = 0; i < brac.size() ; i++)
-{
-   if(brac[i][0] == 'o') 
-   {
-        for(int j = 0 ; j < brac.size() ; j++)
-        {
-        int counter = 0;
-            for(int z = 0 ; z < filter.size() ; z++)
+            if(neg&&i==0){uni=true;}
+            else{uni=false;}
+            if((num[i] == '+' || (num[i] == '-'&&!uni)) && l != 2)
             {
-                if(index[i] != filter[z] && index[j]!=filter[z])
+                //left
+                string ladd = "";
+                for(int j = i-1 ;j >= 0;j--)
                 {
-                    counter++;
+                    if(num[j] == '*' || num[j] == '/')
+                    {
+                        l = 2;
+                        break; // dont do it man
+                    }
+                    else if(num[j] == '+' || (num[j] == '-'&&!uni))
+                    {
+                        start = j+1;
+                        break;
+                    }
+                    else if(j == 0)
+                    {
+                        start = 0;
+                        ladd+=num[j];
+                    }
+                    else
+                    ladd+=num[j];
                 }
+                //right
+                string radd = "";
+                for(int j = i+1 ;j < num.length();j++)
+                {
+                    if(num[j] == '*' || num[j] == '/')
+                    {
+                        l = 2;
+                        break; // dont do it man
+                    }
+                    else if(num[j] == '+' || (num[j] == ('-')&&!uni))
+                    {
+                        end = j-1;
+                        break;
+                    }
+                    else if(j == num.length()-1)
+                    {
+                        end = j;
+                        radd+=num[j];
+                    }
+                    else
+                    radd+=num[j];
+                }
+                ladd = reverse(ladd);
+                if(l == 2)
+                {
+                    break;
+                }
+                if(num[i] == '+')
+                {
+                    num.erase(start,end-start);
+                    if(neg)
+                    {
+                        cal = (-stoi(ladd) + stoi(radd));
+                    }
+                    else
+                    {
+                    cal = (stoi(radd) + stoi(ladd));
+                    neg = (cal < 0 ? true : false);
+                    }
+                        num =  to_string(stoi(ladd) + stoi(radd)) + num;
+                    break;
+                }
+                else
+                {
+                    cal = (stoi(ladd) - stoi(radd));
+                    neg = (cal < 0 ? true : false);
+                    num.erase(start,(end-start)+1);
+                    num =  to_string(stoi(ladd) - stoi(radd)) + num;
+                    break;
+                }
+
             }
-            if(brac[i][1] == brac[j][1] && brac[j][0] == 'b' && counter == filter.size())
+            else if(num[i] == '*' || num[i] == '/')
             {
-                checked[0].push_back(index[i]);
-                checked[1].push_back(index[j]);
-                filter.push_back(index[i]);
-                filter.push_back(index[j]);
+                //left
+                string ladd = "";
+                for(int j = i-1 ;j >= 0;j--)
+                {
+                    if(num[j] == '+' || (num[j] == '-' &&!uni))
+                    {
+                        start = j+1;
+                        break;
+                    }
+                    else if(j == 0)
+                    {
+                        start = 0;
+                        ladd+=num[j];
+                    }
+                    else
+                    ladd+=num[j];
+                }
+                //right
+                string radd = "";
+                for(int j = i+1 ;j < num.length();j++)
+                {
+                    if(num[j] == '*' || num[j] == '/' ||num[j] == '+' || (num[j] == '-' &&!uni) )
+                    {
+                        end = j-1;
+                        break;
+                    }
+                    else if(j == num.length()-1)
+                    {
+                        end = j;
+                        radd+=num[j];
+                    }
+                    else
+                    radd+=num[j];
+                }
+                ladd = reverse(ladd);
+                cal = (num[i] == '*' ? stoi(ladd)*stoi(radd) : stoi(ladd)/stoi(radd));
+                num.erase(start,(end-start)+1);
+                if(start!=0)
+                {
+                for(int k = start ; k < num.length() ; k++)
+                {
+                    store += num[k];
+                }
+                num.erase(start,(num.length()-2));
+                for(int b = start,k = 0 ; b < start+(to_string(cal).length()) ; b ++,k++)
+                {
+                    num += to_string(cal)[k];
+                }
+                num += store;
+                }
+                else
+                {
+                    store = num;
+                    for(int b = start,k = 0 ; b < start+(to_string(cal).length()) ; b ++,k++)
+                    {
+                        num = to_string(cal)[k] + num;
+                    }
+                }
+                l=1;
+                i=0;
             }
         }
-   }
-}
-for(int i = 0 ; i < checked[0].size() ; i++)
-    {
-        int count=0;
-        for(int j = 0 ; j < checked[0].size() ; j++)
-        {
-            if(checked[0][j] > checked[0][i] && checked[1][j] < checked[1][i])
-            {
-                count++;
-            }
-        }
-        checked[2].push_back(count);
     }
-    for(int i = 0 ; i < checked[0].size() ; i++)
-    {
-        for(int j = 0 ; j < checked[0].size(); j++)
-        {
-            if(checked[2][i] < checked[2][j])
-            {
-                int temp[3]{checked[0][i],checked[1][i],checked[2][i]};
-                checked[0][i] = checked[0][j];
-                checked[1][i] = checked[1][j];
-                checked[2][i] = checked[2][j];
-                checked[0][j] = temp[0];
-                checked[1][j] = temp[1];
-                checked[2][j] = temp[2];
-            }
-        }
-    }
-    for(int i = 0 ; i < checked[0].size() ; i++)
-    {
-        cout<<checked[0][i]<<"----"<<checked[1][i]<<"----"<<checked[2][i]<<endl;
+    cout<<cal<<endl;
     }
 }
