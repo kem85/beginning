@@ -50,7 +50,16 @@
         "chrono": "cpp",
         "list": "cpp",
         "unordered_set": "cpp",
-        "forward_list": "cpp"
+        "forward_list": "cpp",
+        "ratio": "cpp",
+        "bitset": "cpp",
+        "regex": "cpp",
+        "format": "cpp",
+        "ranges": "cpp",
+        "span": "cpp",
+        "stacktrace": "cpp",
+        "valarray": "cpp",
+        "any": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

@@ -1,176 +1,71 @@
 #include <iostream>
 #include <vector>
-#include <string>
+#include "functions.cpp"
 using namespace std;
-string reverse(string str)
-{
-    if(str.length() >= 2)
-    {
-     string l;
-     for (int i = str.length() - 1; i >= 0; i--)
-         l += str[i];
-     return l;
-    }
-    return str;
-}
-int getcount(string str)
-{
-    int count = 0;
-    for(int i = 0 ; i < str.length() ; i ++)
-    {
-        if(str[i] == '/'||str[i] == '-'||str[i] == '+'||str[i] == '*')
-        {
-            count++;
-        }
-    }
-    return count;
-}
 int main()
 {
-    while(true){
-    float cal=0;
-    int l,r,start,end = 1;
-    string num="",store; 
-    cin>>num;
-    int countr = getcount(num);
-    for(int z = 0 ; z < countr ; z++)
+    while(true)
     {
-        for(int i = 0 ; i < num.length() ; i ++)
+    cout<<"Final Step [1]"<<endl<<"Detailed Steps[2]"<<endl;
+    int step;
+    cin>>step;
+    int count  = 0;
+    string eq,g;
+    cout<<"Enter Equation: ";
+    cin>>eq;
+    vector<vector<int>> checked = sorter(check(eq));
+    bool hasbrackets = false;
+    int size = (checked[2].size() > 0) ? maxi(checked[2]) : 1;
+    for(int i = 0 ; i < checked[2].size(); i++)
+    {
+        if(eq[i] == '(' || eq[i] == ')')
         {
-            if((num[i] == '+' || (num[i] == '-')) && l != 2)
-            {
-                //left
-                string ladd = "";
-                for(int j = i-1 ;j >= 0;j--)
-                {
-                    if(num[j] == '*' || num[j] == '/')
-                    {
-                        l = 2;
-                        break; // dont do it man
-                    }
-                    else if(num[j] == '+' || (num[j] == '-'))
-                    {
-                        start = j+1;
-                        break;
-                    }
-                    else if(j == 0)
-                    {
-                        start = 0;
-                        ladd+=num[j];
-                    }
-                    else
-                    ladd+=num[j];
-                }
-                //right
-                string radd = "";
-                for(int j = i+1 ;j < num.length();j++)
-                {
-                    if(num[j] == '*' || num[j] == '/')
-                    {
-                        l = 2;
-                        break; // dont do it man
-                    }
-                    else if(num[j] == '+' || (num[j] == ('-')))
-                    {
-                        end = j-1;
-                        break;
-                    }
-                    else if(j == num.length()-1)
-                    {
-                        end = j;
-                        radd+=num[j];
-                    }
-                    else
-                    radd+=num[j];
-                }
-                ladd = reverse(ladd);
-                if(l == 2)
-                {
-                    break;
-                }
-                if(num[i] == '+')
-                {
-                    num.erase(start,(end-start)+1);
-                    num =  to_string(stof(ladd) + stof(radd)) + num;
-                    cal = (stof(radd) + stof(ladd));
-                    break;
-                }
-                else
-                {
-                    cal = (stof(ladd) - stof(radd));
-                    num.erase(start,(end-start));
-                    num =  to_string(stof(ladd) - stof(radd)) + num;
-                    break;
-                }
-
-            }
-            else if(num[i] == '*' || num[i] == '/')
-            {
-                //left
-                string ladd = "";
-                for(int j = i-1 ;j >= 0;j--)
-                {
-                    if(num[j] == '+' || (num[j] == '-' ))
-                    {
-                        start = j+1;
-                        break;
-                    }
-                    else if(j == 0)
-                    {
-                        start = 0;
-                        ladd+=num[j];
-                    }
-                    else
-                    ladd+=num[j];
-                }
-                //right
-                string radd = "";
-                for(int j = i+1 ;j < num.length();j++)
-                {
-                    if(num[j] == '*' || num[j] == '/' ||num[j] == '+' || (num[j] == '-' ) )
-                    {
-                        end = j-1;
-                        break;
-                    }
-                    else if(j == num.length()-1)
-                    {
-                        end = j;
-                        radd+=num[j];
-                    }
-                    else
-                    radd+=num[j];
-                }
-                ladd = reverse(ladd);
-                cal = (num[i] == '*' ? stof(ladd)*stof(radd) : stof(ladd)/stof(radd));
-                num.erase(start,(end-start)+1);
-                if(start!=0)
-                {
-                for(int k = start ; k < num.length() ; k++)
-                {
-                    store += num[k];
-                }
-                num.erase(start,(num.length()-2));
-                for(int b = start,k = 0 ; b < start+(to_string(cal).length()) ; b ++,k++)
-                {
-                    num += to_string(cal)[k];
-                }
-                num += store;
-                }
-                else
-                {
-                    store = num;
-                    for(int b = start,k = to_string(cal).length()-1; b < start+(to_string(cal).length()) ; b ++,k--)
-                    {
-                        num = to_string(cal)[k] + num;
-                    }
-                }
-
-                store.clear();
-                l=1;
-                i=0;
-            }
+            hasbrackets = true;
+            break;
         }
     }
-    cout<<cal<<endl;
+    if(!hasbrackets)
+    {
+        goto pablo;
+    }
+    for(int i = 0 ; i < checked[0].size(); i++)
+    {
+        int start = checked[0][i];
+        int end = checked[1][i];
+        string operation;
+        for(int j = start+1 ; j<end ; j++)
+        {
+            operation += eq[j];
+        }
+        bool isyes = false;
+        operation = clear(operation,0,0,true);
+        for(int i = 0 ; i < operation.length(); i++)
+        {
+            if(operation[i] == '+' ||operation[i] == '-' ||operation[i] == '*' ||operation[i] == '/')
+            {
+                isyes = true;
+                break;
+            }
+        }
+        if(!isyes){continue;}
+        else
+        {
+        eq = replace(eq,to_string(calc(operation)),start,end);
+        i=0;
+        checked = sorter(check(eq));
+        count++;
+        if(step == 2)
+        {
+            cout<<"Step Number "<<count<<endl;
+            if(i<checked[2].size()-1)
+            {
+                cout<<eq<<endl;
+            }
+        }
+        }
+
+    }
+    pablo:
+    cout<<eq<<" = "<<calc(eq)<<endl<<"Number of operations: "<<count<<endl;
     }
 }
