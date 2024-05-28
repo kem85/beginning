@@ -10,7 +10,7 @@ int power(int b,int p)
     return c;
     
 }
-int main()
+int main() //this is a dumb comment
 {
     char again='y';
     while(again=='y'||again=='Y')
