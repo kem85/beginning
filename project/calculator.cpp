@@ -28,6 +28,7 @@ int main()
     {
         goto pablo;
     }
+    here:
     for(int i = 0 ; i < checked[0].size(); i++)
     {
         int start = checked[0][i];
@@ -62,6 +63,7 @@ int main()
                 cout<<eq<<endl;
             }
         }
+        goto here;
         }
 
     }
