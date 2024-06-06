@@ -2,21 +2,13 @@
 #include <vector>
 #include "functions.cpp"
 using namespace std;
-int main()
+string allinone(string eq)
 {
-    while(true)
-    {
-    cout<<"Final Step [1]"<<endl<<"Detailed Steps[2]"<<endl;
-    int step;
-    cin>>step;
     int count  = 0;
-    string eq,g;
-    cout<<"Enter Equation: ";
-    cin>>eq;
+    string g,problem;
     vector<vector<int>> checked = sorter(check(eq));
     bool hasbrackets = false;
-    int size = (checked[2].size() > 0) ? maxi(checked[2]) : 1;
-    for(int i = 0 ; i < checked[2].size(); i++)
+    for(int i = 0 ; i < eq.length(); i++)
     {
         if(eq[i] == '(' || eq[i] == ')')
         {
@@ -24,12 +16,14 @@ int main()
             break;
         }
     }
+    here:
+    int size = (checked[2].size() > 0) ? maxi(checked[2])+1 : 0;
     if(!hasbrackets)
     {
+        count++;
         goto pablo;
     }
-    here:
-    for(int i = 0 ; i < checked[0].size(); i++)
+    for(int i = 0 ; i < size; i++)
     {
         int start = checked[0][i];
         int end = checked[1][i];
@@ -38,36 +32,43 @@ int main()
         {
             operation += eq[j];
         }
-        bool isyes = false;
+        cout<<operation<<endl;
         operation = clear(operation,0,0,true);
-        for(int i = 0 ; i < operation.length(); i++)
-        {
-            if(operation[i] == '+' ||operation[i] == '-' ||operation[i] == '*' ||operation[i] == '/')
-            {
-                isyes = true;
-                break;
-            }
-        }
-        if(!isyes){continue;}
+        if(!hassign(operation)){continue;}
         else
         {
+        problem = eq;
         eq = replace(eq,to_string(calc(operation)),start,end);
         i=0;
         checked = sorter(check(eq));
-        count++;
-        if(step == 2)
-        {
-            cout<<"Step Number "<<count<<endl;
-            if(i<checked[2].size()-1)
-            {
-                cout<<eq<<endl;
-            }
-        }
+            count++;
+            // if(i<checked[2].size()-1)
+            // {
+            //     cout<<"Step Number "<<count<<endl;
+            // }
+            // if(i<checked[2].size())
+            // {
+            //     cout<<eq<<endl;
+            // }
         goto here;
         }
 
     }
     pablo:
-    cout<<eq<<" = "<<calc(eq)<<endl<<"Number of operations: "<<count<<endl;
-    }
+    return to_string(calc(eq));
+}
+int main()
+{
+    string eq;
+    cout<<"Enter Equation: ";
+    cin>>eq;
+    vector<vector<int>> checked = sorter(check(eq));
+    // if(eq.length() >= 400)
+    // {
+    // vector<string> equations = optimize(eq,checked);
+    // cout<<allinone(eq);
+    // }
+
+        cout<<allinone(eq);
+    
 }

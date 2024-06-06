@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <algorithm>
 using namespace std;
 vector<vector<int>> check(string eq)
 {
@@ -21,28 +22,19 @@ vector<vector<int>> check(string eq)
             index.push_back(i);
         }
     }
-
-    for(int i = 0; i < brac.size() ; i++)
+    for(int i = 0; i < brac.size()/2; i++)
     {
     if(brac[i][0] == 'o') 
     {
-            for(int j = 0 ; j < brac.size() ; j++)
+            for(int j = 0 ; j < brac.size(); j++)
             {
-            int counter = 0;
-                for(int z = 0 ; z < filter.size() ; z++)
-                {
-                    if(index[i] != filter[z] && index[j]!=filter[z])
-                    {
-                        counter++;
-                    }
-                }
-                if(brac[i][1] == brac[j][1] && brac[j][0] == 'b' && counter == filter.size())
+                if(brac[i][1] == brac[j][1] && brac[j][0] == 'b' && !(binary_search(filter.begin(), filter.end(), index[i])))
                 {
                     checked[0].push_back(index[i]);
                     checked[1].push_back(index[j]);
                     filter.push_back(index[i]);
                     filter.push_back(index[j]);
-                }
+                } 
             }
     }
     }
@@ -69,7 +61,6 @@ vector<vector<int>> sorter(vector<vector<int>> checked)
         {
             if(checked[2][i] < checked[2][j])
             {
-                int temp[3]{checked[0][i],checked[1][i],checked[2][i]};
                 swap(checked[0][i], checked[0][j]);
                 swap(checked[1][i], checked[1][j]);
                 swap(checked[2][i], checked[2][j]);
@@ -120,6 +111,17 @@ string clear(string str,int start,int end,bool blear = false)
     }
     return str;
 }
+bool hassign(string eq)
+{
+    for(int i = 0 ; i < eq.length() ; i++)
+    {
+        if(eq[i] == '+' ||eq[i] == '-' ||eq[i] == '*' ||eq[i] == '/')
+        {
+            return true;
+        }
+    }
+    return false;
+}
 string replace(string str,string rep,int start, int end)
 {
     string store;
@@ -145,9 +147,41 @@ int maxi(vector<int> vec)
     }
     return max;
 }
+// vector<string> optimize(string eq, vector<vector<int>> checked)
+// {
+//     // bool hasbracket = false;
+//     // int position;
+//     // string first,second;
+//     // for(int i  = eq.length()/2+1; i < eq.length() ; i++)
+//     // {
+//     //     for(int j = 2;  j < i ; j++)
+//     //     {
+//     //         if(i % j == 0)
+//     //         {
+//     //             position = i;
+//     //             i = eq.length();
+//     //             break;
+//     //         }
+//     //     }
+//     // }
+//     // for(int i = 0; i < eq.length() ; i++)
+//     // {
+//     //     if(i < position)
+//     //     {
+//     //     first += eq[i];
+//     //     }
+//     //     else
+//     //     {
+//     //     second += eq[i];
+//     //     }
+//     // }
+// }
 int calc(string num)
 {
-    bool exist = false;
+    if(!hassign(num))
+    {
+        return stof(num);
+    }
     num = clear(num,0,0,true);
     int g = num.length();
     float cal= 0;
@@ -160,7 +194,6 @@ int calc(string num)
         {
             if((num[i] == '+' || (num[i] == '-')) && l != 2)
             {
-                exist=true;
                 //left
                 string ladd = "";
                 for(int j = i-1 ;j >= 0;j--)
@@ -229,7 +262,6 @@ int calc(string num)
             else if(num[i] == '*' || num[i] == '/')
             {
                 //left
-                exist = true;
                 string ladd = "";
                 for(int j = i-1 ;j >= 0;j--)
                 {
@@ -299,10 +331,5 @@ int calc(string num)
             }
         }
     }
-    if(!exist)
-    {
-        return stof(num);
-    }
-    else
     return cal;
 }

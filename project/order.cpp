@@ -1,26 +1,47 @@
 #include <iostream>
 #include <vector>
-using namespace std;
-int main()
-{
-    vector<string> adder(2);
+#include <string>
+#include <algorithm>
+using namespace std; 
+int main() 
+{ 
     string eq;
-    char sign;
-    int index;
     cin>>eq;
-    int size = eq.length();
-    cout<<eq[((eq.length()/2)-2)]<<endl;
-    for(int i = 0 ; i < size/2 ; i++)
+    vector<string> brac;
+    vector<int> filter,index;
+    vector<vector<int>> checked(3);
+    int count = 0;
+    for(int i = 0; i < eq.length() ; i++)
     {
-        if(eq[i] == '+' ||eq[i] == '-' ||eq[i] == '*' ||eq[i] == '/')
+        if(eq[i] == '(')
         {
-            sign == eq[i];
+            brac.push_back("o"+ to_string(++count));
+            index.push_back(i);
         }
-        adder[0] += eq[i];
+        if(eq[i] == ')')
+        {
+            brac.push_back('b'+ to_string(count--));
+            index.push_back(i);
+        }
     }
-    for(int i = size/2 ; i < size ; i++)
+    for(int i = 0; i < brac.size() / 2; i++)
     {
-        adder[1] += eq[i];
+    if(brac[i][0] == 'o') 
+    {
+            for(int j = 0 ; j < brac.size(); j++)
+            {
+                if(brac[i][1] == brac[j][1] && brac[j][0] == 'b' && !(binary_search(filter.begin(), filter.end(), index[i])))
+                {
+                    checked[0].push_back(index[i]);
+                    checked[1].push_back(index[j]);
+                    filter.push_back(index[i]);
+                    filter.push_back(index[j]);
+                } 
+            }
     }
-    cout<<adder[0]<<endl<<adder[1];
-}
+    }
+    for(int i = 0; i < checked[0].size() ;i++)
+    {
+        cout<<checked[0][i]<<" "<<checked[1][i];
+    }
+} 
