@@ -1,0 +1,1 @@
+console.log("what is c%JS file","color: red;");

@@ -1,0 +1,27 @@
+*{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-image: url("./watch.jpg");
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+.welcomesign{
+    min-width: 100vw;
+    min-height:70vh;
+    display:flex;
+    color: orangered;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 50px;
+}
+.textt{
+    font-size:25px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+

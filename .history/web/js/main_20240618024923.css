@@ -1,0 +1,6 @@
+div{
+    display:inline;
+    background-color:red;
+    min-width: 10vh;
+    min-height: 10vh;
+}

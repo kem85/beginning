@@ -1,0 +1,1 @@
+MyDiv.InnerHtml = "New content"; 

@@ -1,0 +1,1 @@
+console.log("what is love",c%"color: red;");

@@ -1,0 +1,17 @@
+*{
+    background-image: url("./watch.jpg");
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.welcomesign{
+    min-width: 100vw;
+    min-height:70vh;
+    display:flex;
+    color: orangered;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 50px;
+}
+

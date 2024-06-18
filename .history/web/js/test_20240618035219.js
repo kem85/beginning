@@ -1,0 +1,2 @@
+
+myDiv.innerHTML = "New content"; 

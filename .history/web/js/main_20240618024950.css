@@ -1,0 +1,9 @@
+div{
+    display:inline-block;
+    background-color:red;
+    min-width: 20vh;
+    min-height: 20vh;
+}
+.banner:hover{
+    background-color: blue;
+}

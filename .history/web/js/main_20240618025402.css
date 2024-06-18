@@ -1,0 +1,13 @@
+*{
+    background-image: url("./watch.jpg");
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+header{
+    display:flex;
+    color: orangered;
+    justify-items: center;
+    min-
+}
+

@@ -1,0 +1,1 @@
+MyDiv.innerHTML="what is love";

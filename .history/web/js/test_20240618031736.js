@@ -1,0 +1,1 @@
+console.log("%cwhat is JS file","color: red;");
