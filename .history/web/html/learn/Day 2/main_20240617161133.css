@@ -1,0 +1,8 @@
+.banner{
+    min-height: 100vh;
+    
+    border: 20px solid red;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}

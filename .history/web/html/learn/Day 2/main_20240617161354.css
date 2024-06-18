@@ -1,0 +1,21 @@
+.banner{
+    border: 20px solid red;
+    background-color: gray;
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+.banner::after{
+    content: "";
+    position: absolute;
+    t
+    transition:all 0.5 linear;
+}
+.banner:hover{
+    transition:all 0.5 linear;
+    position: absolute;
+    top:20%;
+    left:20%;
+}

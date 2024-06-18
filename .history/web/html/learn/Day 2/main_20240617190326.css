@@ -1,0 +1,41 @@
+.banner{
+    border: 20px solid red;
+    background-color: gray;
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    transition:all 100 linear;
+}
+.banner::after{
+    content: "";
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top:10px;
+    left:20px;
+    border: 20px solid purple;
+    transition:all 2s ease-in-out;
+}
+.banner:hover::after{
+    position: absolute;
+    top:20%;
+    left:20%;
+    background-color: purple;
+    border: 15px solid black;
+    border-radius: 100px;
+}
+
+@keyframes move
+{
+    0%{
+        transformx:10px;
+    }
+    50%{
+        transformx:10px;
+    }
+    0%{
+        transformx:10px;
+    }
+}

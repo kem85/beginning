@@ -1,0 +1,29 @@
+*{
+    padding:0;
+margin:0;
+box-sizing: border-box;
+}
+div{
+    min-height: 100vh;
+    min-width: 100vw;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 60px;
+    color:orange;
+}
+.banner{
+    background: url("./relative.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.banner2{
+    background: linear-gradient(to right,rgba(0,0,0,0.1),rgba(0,0,0,0.9)), 
+    url("./relative.jpg") center/cover fixed no-repeat;
+}
+p:active{
+    color:white;
+    background: red;
+}

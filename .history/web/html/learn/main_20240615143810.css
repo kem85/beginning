@@ -1,0 +1,11 @@
+p{
+    min-height: 100vh;
+    min-width: 100vw;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: purple;
+    font-size: 60px;
+}
+<

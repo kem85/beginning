@@ -1,0 +1,9 @@
+p{
+    display:flex;
+    color: purple;
+    font-size: 60px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+}
