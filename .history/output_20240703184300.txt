@@ -1,0 +1,2 @@
+g/rankup
+/warp h

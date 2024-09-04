@@ -1,2 +1,0 @@
-let a="Elzero Web School";
-console.log(a.slice(2,6).charAt(2,0).toLocaleUpperCase());

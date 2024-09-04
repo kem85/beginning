@@ -1,0 +1,1 @@
+['c:\\Users\\kem7\\Documents\\GitHub\\beginning\\python\\clipboard.py']
